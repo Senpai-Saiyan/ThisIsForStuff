@@ -1,0 +1,17 @@
+{
+  "global": {
+    "eval": false,
+    "pullanddeploy": false,
+    "setUsername": false,
+    "cmdauth": false,
+    "alias": false,
+    "aliases": false,
+    "ban": false,
+    "bans": false,
+    "unban": false,
+    "votekick": false,
+    "msg": false,
+    "say": true
+  },
+  "users": {}
+}
