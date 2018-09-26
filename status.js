@@ -73,7 +73,7 @@ try{
 	Config = require("./config.json");
 } catch(e){ //no config file, use defaults
 	Config.debug = false;
-	Config.commandPrefix = 's!';
+	Config.commandPrefix = 'pleb!';
 	try{
 		if(fs.lstatSync("./config.json").isFile()){
 			console.log("WARNING: config.json found but we couldn't read it!\n" + e.stack);
@@ -85,7 +85,7 @@ try{
 	}
 }
 if(!Config.hasOwnProperty("commandPrefix")){
-	Config.commandPrefix = 's!';
+	Config.commandPrefix = 'pleb!';
 }
 
 var messagebox;
@@ -209,7 +209,6 @@ bot.on("ready", function () {
 	console.log("Logged in! Serving in " + bot.guilds.array().length + " servers");
 	require("./plugins.js").init(hooks);
 	console.log("type "+Config.commandPrefix+"help in Discord for a commands list.");
-	bot.user.setActivity(("Senpai"), { type: 'Watching' });
 
 });
 
@@ -317,7 +316,7 @@ function checkMessageForCommand(msg, isEdit) {
 			}
 			return true;
 		} else {
-			msg.channel.send(" Nani? "+cmdTxt+"?").then((message => message.delete(5000)))
+			msg.channel.send(" Nani? "+cmdTxt+"?").then((message => message.delete(100)))
 			return true;
 		}
 	} else {
@@ -349,10 +348,10 @@ bot.on("messageUpdate", (oldMessage, newMessage) => {
 
 //Log user status changes
 bot.on("presence", function(user,status,gameId) {
-	//if(status === "online"){
-	//console.log("presence update");
+	if(status === "online"){
+	console.log("presence update");
 	console.log(user+" went "+status);
-	//}
+	}
 	try{
 	if(status != 'offline'){
 		if(messagebox.hasOwnProperty(user.id)){
